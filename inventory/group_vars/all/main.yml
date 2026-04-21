@@ -1,0 +1,25 @@
+---
+# Lab-wide, non-secret variables.
+# Secrets live in vault.yml (encrypted with ansible-vault).
+
+lab:
+  domain: lab.local
+  timezone_name: EST
+  timezone_offset: "-5"
+  ntp_servers:
+    - 129.6.15.28    # time-a-g.nist.gov
+    - 132.163.97.1   # time.nist.gov
+  dns_servers:
+    - 1.1.1.1
+    - 8.8.8.8
+  syslog_host: 192.168.100.10   # jump host / Pi
+
+mgmt_network: 192.168.100.0/24
+mgmt_gateway: 192.168.100.1
+
+banner_motd: |
+  ***********************************************************
+  * Authorized access only. All activity is logged.         *
+  * Home lab - managed by Ansible from Git. Do not edit     *
+  * device configs by hand; changes will be overwritten.    *
+  ***********************************************************

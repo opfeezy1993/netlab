@@ -1,0 +1,11 @@
+---
+# THIS IS AN EXAMPLE. The real file must be encrypted with ansible-vault.
+#
+# To create the real file:
+#   ansible-vault create inventory/group_vars/all/vault.yml
+#
+# Then paste the variables below and fill in real values. See docs/secrets.md.
+
+vault_lab_user: labadmin
+vault_lab_password: ChangeMeToAStrongPassword!
+vault_enable_secret: ChangeMeToAStrongEnableSecret!

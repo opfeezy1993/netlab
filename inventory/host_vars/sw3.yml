@@ -1,0 +1,15 @@
+---
+hostname: sw3
+mgmt_ip: 192.168.100.13
+mgmt_mask: 255.255.255.0
+
+access_ports:
+  - interface: FastEthernet0/1
+    vlan: 30
+    description: "VOICE-PHONE-01"
+
+trunk_ports:
+  - interface: GigabitEthernet0/1
+    description: "TRUNK-TO-sw2"
+    native_vlan: 999
+    allowed_vlans: "10,20,30,99"

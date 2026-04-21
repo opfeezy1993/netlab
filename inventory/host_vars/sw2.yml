@@ -1,0 +1,19 @@
+---
+hostname: sw2
+mgmt_ip: 192.168.100.12
+mgmt_mask: 255.255.255.0
+
+access_ports:
+  - interface: FastEthernet0/1
+    vlan: 10
+    description: "USER-PC-03"
+
+trunk_ports:
+  - interface: GigabitEthernet0/1
+    description: "TRUNK-TO-sw1"
+    native_vlan: 999
+    allowed_vlans: "10,20,30,99"
+  - interface: GigabitEthernet0/2
+    description: "TRUNK-TO-sw3"
+    native_vlan: 999
+    allowed_vlans: "10,20,30,99"

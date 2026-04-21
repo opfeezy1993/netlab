@@ -1,0 +1,21 @@
+---
+- name: Gather facts from all lab devices
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Collect IOS facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - hardware
+          - config
+          - interfaces
+
+    - name: Print a one-line summary per device
+      ansible.builtin.debug:
+        msg: >-
+          {{ inventory_hostname }} |
+          model={{ ansible_net_model | default('n/a') }} |
+          ios={{ ansible_net_version | default('n/a') }} |
+          serial={{ ansible_net_serialnum | default('n/a') }} |
+          uptime={{ ansible_net_uptime | default('n/a') }}

@@ -1,0 +1,16 @@
+---
+hostname: r3
+mgmt_ip: 192.168.100.23
+mgmt_mask: 255.255.255.0
+
+interfaces:
+  - name: FastEthernet0/0
+    description: "LINK-TO-R2"
+    ip: 10.0.0.6
+    mask: 255.255.255.252
+    ospf_area: 0
+  - name: FastEthernet0/1
+    description: "LAN-BRANCH"
+    ip: 10.3.3.1
+    mask: 255.255.255.0
+    ospf_area: 0

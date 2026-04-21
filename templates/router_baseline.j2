@@ -1,0 +1,67 @@
+! -----------------------------------------------------------
+! Baseline config for {{ inventory_hostname }}
+! Source of truth: Git. Do not edit on-box.
+! -----------------------------------------------------------
+hostname {{ hostname }}
+!
+ip domain-name {{ lab.domain }}
+no ip domain-lookup
+!
+{% if enable_cef %}
+ip cef
+{% endif %}
+!
+clock timezone {{ lab.timezone_name }} {{ lab.timezone_offset }} 0
+!
+{% for ntp in lab.ntp_servers %}
+ntp server {{ ntp }}
+{% endfor %}
+!
+! Local user and enable secret
+username {{ ansible_user }} privilege 15 secret {{ ansible_password }}
+enable secret {{ ansible_become_password }}
+!
+! SSH
+ip ssh version 2
+ip ssh time-out 60
+!
+line vty 0 4
+ transport input ssh
+ login local
+!
+line con 0
+ login local
+ logging synchronous
+!
+! Logging
+logging host {{ lab.syslog_host }}
+logging trap informational
+service timestamps log datetime msec localtime show-timezone
+service timestamps debug datetime msec localtime show-timezone
+!
+! Management interface (loopback-style default on mgmt IP via first interface)
+! Note: 2600 series routers do not have a dedicated mgmt port; we rely on
+! in-band management via one of the interfaces below.
+!
+! Interfaces
+{% for i in interfaces %}
+interface {{ i.name }}
+ description {{ i.description }}
+ ip address {{ i.ip }} {{ i.mask }}
+ no shutdown
+!
+{% endfor %}
+!
+! OSPF
+router ospf {{ ospf.process_id }}
+ router-id {{ mgmt_ip }}
+ log-adjacency-changes
+ passive-interface default
+{% for i in interfaces %}
+{% if i.ospf_area is defined %}
+ network {{ i.ip }} 0.0.0.0 area {{ i.ospf_area }}
+ no passive-interface {{ i.name }}
+{% endif %}
+{% endfor %}
+!
+end

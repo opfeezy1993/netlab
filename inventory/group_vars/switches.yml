@@ -1,0 +1,17 @@
+---
+device_role: switch
+platform: cat2960
+
+default_vlans:
+  - id: 10
+    name: USERS
+  - id: 20
+    name: SERVERS
+  - id: 30
+    name: VOICE
+  - id: 99
+    name: MGMT
+  - id: 999
+    name: NATIVE_UNUSED
+
+mgmt_vlan: 99

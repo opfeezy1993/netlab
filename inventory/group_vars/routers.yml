@@ -1,0 +1,9 @@
+---
+device_role: router
+platform: c2600
+
+enable_cef: true
+
+ospf:
+  process_id: 1
+  default_area: 0

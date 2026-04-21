@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Ansible
+*.retry
+.vault_pass
+vault_pass.txt
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Never commit secrets or credentials
+*.secret
+*secrets*
+*credentials*
+*.pem
+*.key
+
+# Rendered configs (intermediate artifacts from push_baseline)
+/tmp/
+rendered/

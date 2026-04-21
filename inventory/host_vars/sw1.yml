@@ -1,0 +1,20 @@
+---
+hostname: sw1
+mgmt_ip: 192.168.100.11
+mgmt_mask: 255.255.255.0
+
+# Example access ports — edit once you wire things up
+access_ports:
+  - interface: FastEthernet0/1
+    vlan: 10
+    description: "USER-PC-01"
+  - interface: FastEthernet0/2
+    vlan: 20
+    description: "SERVER-01"
+
+# Trunk uplinks
+trunk_ports:
+  - interface: GigabitEthernet0/1
+    description: "TRUNK-TO-sw2"
+    native_vlan: 999
+    allowed_vlans: "10,20,30,99"
