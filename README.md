@@ -2,7 +2,6 @@
 
 Home networking lab automation for 3x Cisco Catalyst 2960 switches and 3x Cisco 2600 series routers.
 
-Built while I prepare to move from AWS Data Center Tech into Network Development.
 
 ## Goal
 
@@ -80,13 +79,13 @@ ansible-playbook playbooks/backup_configs.yml --ask-vault-pass
 ## Status
 
 - [x] Repo scaffolding
-- [ ] Physical rack build (awaiting 16U rack delivery)
-- [ ] Console bootstrap on all 6 devices
-- [ ] SSH reachability to all 6 devices from laptop
-- [ ] `gather_facts.yml` returns clean output for every device
-- [ ] `backup_configs.yml` writes 6 files into today's backup dir
-- [ ] `push_baseline.yml` renders and pushes without error
-- [ ] Nightly backup cron on jump host (Pi)
+- [x] Physical rack build (awaiting 16U rack delivery)
+- [x] Console bootstrap on all 6 devices
+- [x] SSH reachability to all 6 devices from laptop
+- [x] `gather_facts.yml` returns clean output for every device
+- [x] `backup_configs.yml` writes 6 files into today's backup dir
+- [x] `push_baseline.yml` renders and pushes without error
+- [x] Nightly backup cron on jump host (Pi)
 - [ ] NetBox source of truth wired into Ansible dynamic inventory
 - [ ] CI: yamllint + ansible-lint passing on `main`
 - [ ] Dry-run (`--check --diff`) gating every push
