@@ -28,3 +28,5 @@ Thumbs.db
 # Rendered configs (intermediate artifacts from push_baseline)
 /tmp/
 rendered/
+inventory/group_vars/all/vault.yml
+.vault_pass

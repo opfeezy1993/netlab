@@ -4,7 +4,7 @@
   gather_facts: true
   vars:
     backup_root: "{{ playbook_dir }}/../backups"
-    backup_dir: "{{ backup_root }}/{{ ansible_date_time.date }}"
+    backup_dir: "{{ backup_root }}/{{ lookup('pipe', 'date +%Y-%m-%d') }}"
 
   tasks:
     - name: Ensure today's backup directory exists
